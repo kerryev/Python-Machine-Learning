@@ -1,0 +1,27 @@
+import numpy as np  # Import numpy
+
+
+def blankline():
+    print('')
+
+
+# Numbers from 0 to 3, dimensions of array: 3x4
+a = np.random.randint(0, 3, (3, 4))
+print(a)
+
+blankline()
+
+# Manually imports numbers into an array
+a1 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(a1)
+
+blankline()
+
+np.random.shuffle(a1)  # Switches elements in first axis
+print(a1)
+
+blankline()
+
+# Seed generator
+np.random.seed(1)
+print(np.random.rand(3, 3))
