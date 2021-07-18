@@ -1,0 +1,113 @@
+# Notes from freecodecamp that have helped introduce concepts in numpy, a tool for interpreting data and machine learning
+
+import numpy as np
+
+
+def x():
+    print('---------------------------------------------')
+
+
+# ------------------Datatype information-----------------------
+
+# One dimensional array
+a = np.array([1, 2, 3])
+print(a)
+
+# Two Dimensional array
+b = np.array([[9.0, 8.0, 7.0], [6.0, 5.0, 4.0]])
+print(b)
+
+# get dimension
+print(a.ndim)
+
+# Get shape
+print(a.shape)  # Is only one dimension --> Vector
+print(b.shape)
+
+# Get type
+print(a.dtype)  # Says the amount of bits that the array is stored in
+
+# Get size
+print(a.itemsize)
+
+# Get totalsize
+print(a.nbytes)
+x()
+
+# ------------------ Accessing/Changing Specific Elements, Rows, Columns, etc. // INDEXING --------------------------------------
+
+a = np.array([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [
+             11, 12, 13, 14, 15, 16, 17, 18, 19, 20]])
+print(a)
+
+# Get a specific element [r,c]
+print(a[1, 5])  # Finds element in 1st row, 5th collumn, you can also use negatives
+
+# Get a specific row
+print(a[0, :])
+
+# get a specific collumn
+print(a[:, 2])
+
+# [startindex:endindex:stepsize]
+print(a[0, 1:6:2])
+
+# Changing elements
+a[1, 5] = 20  # Changes the value on the 1st row, 5th collumn
+print(a)
+
+# 3-d example: get specific element (work outside in)
+b = np.array([[[1, 2], [3, 4], [5, 6], [7, 8]]])  # 3-d array
+print(b)
+print(b[0, 1, 1])
+x()
+
+# -------------------------------- Initializing Arrays ---------------------------------------------
+
+# Initialize all 0's matrix
+print(np.zeros((2, 2)))
+
+# All 1's matrix
+print(np.ones((2, 2), dtype='int32'))
+
+# Any other number
+print(np.full((2, 2), 99, dtype='float32'))
+
+# Any other number (full like)
+array1 = np.full_like(a, 4)
+print(array1)
+
+# Random decimal values
+print(np.random.rand(4, 2))
+
+# Random integer values
+print(np.random.randint(2, 7, size=(3, 3)))
+x()
+
+# -------------------------- Mathematics -------------------------------
+
+a1 = np.array([1, 2, 3, 4, 5])
+
+# Addition
+n1 = a1 + 2
+print(n1)
+
+# Subtraction
+n2 = a1 - 2
+print(n2)
+
+# Multiplcation
+n3 = a1*3
+print(n3)
+
+# Adding values in different arrays
+b1 = np.array([2, 5, 9, 11, 16])
+n4 = a1 + b1
+print(n4)
+x()
+
+# ------------------------------ Other Information -----------------------------
+
+# You can index with a list in numpy
+a3 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(a3[[1, 2, 8]])
