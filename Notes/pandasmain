@@ -1,0 +1,113 @@
+# PANDAS INTRODUCTION AND TUTORIAL
+# - Data science tools with the flexibility of python
+# - Contains tools for reading and interpreting csv files, excel spreadsheets, sorting and filtering
+# - Can work with large amounts of data
+
+import numpy as np
+import pandas as pd
+import random
+
+print(pd.__version__)  # Access pandas version
+
+# -------------- Series create, manipulate, querry, delete ---------------------
+
+# Creating a series from list
+arr = [0, 1, 2, 3, 4]
+s1 = pd.Series(arr)
+print(s1)
+
+order = [1, 2, 3, 4, 5]
+s2 = pd.Series(arr, index=order)
+print(s2)
+
+# Creating a random Ndarray
+n = np.random.randn(5)
+index = ['a', 'b', 'c', 'd', 'e']
+s2 = pd.Series(n, index=index)
+print(s2)
+
+# Creating a series from a dictionary
+d = {'a': 1, 'b': 2, 'c': 3}
+s3 = pd.Series(d)
+print(s3)
+
+# Modify the index of a series
+s1.index = ['A', 'B', 'C', 'D', 'E']
+print(s1)
+
+# Slicing
+x = s1[:3]  # First 3 numbers in table only show
+print(x)
+
+z = s1[2:]  # Last 2 numbers in the table only show
+print(z)
+
+# Appending values
+s4 = s1.append(s3)
+print(s4)
+
+# Dropping values in series
+y1 = s4.drop('c')
+print(y1)
+
+# ------------------- Series operations -------------------------
+
+arr1 = [0, 1, 2, 3, 4, 5, 7]
+arr2 = [6, 7, 8, 9, 5]
+
+s5 = pd.Series(arr2)
+print(s5)
+
+s6 = pd.Series(arr1)
+print(s6)
+
+y2 = s5.add(s6)  # Adding numbers in differnt arrays
+print(y2)
+
+# also works for sub, mul, div
+
+# Determining the median, mean and mode
+print('median', s6.median())
+print('mean', s6.mean())
+print('max', s6.max())  # prints the maximum value in the array
+
+# --------------- Making a dataframe / analysing data in a dateframe ----------------------
+
+# Making a dataframe
+date = pd.date_range('today', periods=6)  # Define time series as index
+num_arr = np.random.randn(6, 4)
+columns = ['A', 'B', 'C', 'D']  # Use the table as a collumn name
+
+df1 = pd.DataFrame(num_arr, index=date, columns=columns)
+print(df1)
+
+# See datatypes of array
+datas_types = df1.dtypes
+print(datas_types)
+
+# Accessing the top (n) values in the dataframe
+data_frame_n = df1.head(3)  # Seeing the top 3 data values
+print(data_frame_n)
+
+# See statistical data in datframe
+statistics = df1.describe()
+print(statistics)
+
+# Query dataframe by tag
+query = df1[['A', 'B']]
+print(query)
+
+# ----------------- Dataframe file operations and visual data analysis (matplotlib) --------------------
+
+# Completed in jupyter notebook - produces a graph
+# ***Remember to import pandas and numpy in cell
+
+ts = pd.Series(np.random.randn(50), index=pd.date_range('today', periods=50))
+ts = ts.cumsum()
+# print(ts.plot())
+
+df = pd.DataFrame(np.random.randn(50, 4), index=ts.index,  # Prints plot of 4 seperte lines of data
+                  columns=['A', 'B', 'X', 'Y'])
+
+df = df.cumsum()
+# df.plot()
